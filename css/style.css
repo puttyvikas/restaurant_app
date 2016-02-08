@@ -1,0 +1,144 @@
+ body {
+      position: relative;
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #777;
+      background-image: url(images/wood-textures.jpg);
+      background: #ededed;
+    padding: 0px;
+    margin: 0px;
+  }
+body {
+    padding-right: 0px !important;
+    margin-right: 0px !important;
+}
+p {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+  .nav-tabs li a {
+      color: #777;
+  }
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 13px !important;
+      letter-spacing: 2px;
+      opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+      text-transform: uppercase;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: green !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+  .open .dropdown-toggle {
+      color: #fff;
+      background-color: #555 !important;
+  }
+  .dropdown-menu li a {
+      color: #000 !important;
+  }
+  .dropdown-menu li a:hover {
+      background-color: #2e2e31 !important;
+  }
+
+  
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .thumbnail p {
+      margin-top: 15px;
+      color: #555;
+  }
+  .btn {
+      padding: 10px 20px;
+      background-color: #333;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+  .btn:hover, .btn:focus {
+      border: 1px solid #333;
+      background-color: #fff;
+      color: #000;
+  }
+.space_top_btm {
+    padding: 60px 0px;
+    margin: auto 0px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.footer_div_main p {
+    font-family: 'Roboto', arial, sans-serif;
+}
+.design_form{
+   padding-bottom:15px;
+   border-radius:4px;
+   background-color:#ededed;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+textarea{
+  resize:vertical;
+}
+.rank {
+  color:white;
+  padding:2px;
+  border-radius: 4px;
+}
+.rank h1{
+  margin-top: 2px;
+}
+.col-sm-8{
+  margin-top:-20px !important;
+}
+.reviews{
+  display: none;
+}
+#flip {
+    padding: 5px;
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+    margin-left: -221px;
+    width: 50%;
+    cursor: pointer;
+}
+#flip_pics {
+  display: inline-block;
+    padding: 5px;
+    text-align: center;
+    margin-top: -33px;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+    width: 50%;
+    cursor: pointer;
+}
+.srch{
+  background-color:#ededed;
+  box-shadow: 0 4px 11px 0 rgba(0, 100, 255, 0.2), 0 6px 20px 0 rgba(0, 0, 255, 0.19);
+  padding: 10px;
+  border-radius: 0px;
+}
+.thumbnail li{
+  line-height: 28px;
+  font-size: 21px;
+}
