@@ -304,45 +304,6 @@ $query_run2 = mysql_query($query2);
 
 //model
 
-<!--                <div class="modal fade" id="details" role="dialog">
-                    <div class="modal-dialog">
-
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">×</button>
-                                <h4 style="letter-spacing:2px;margin-bottom:12px"> Details</h4>
-                            </div>
-                            <div class="modal-body">
-                                <ul>
-                                    <?php 
-    $query1 = "SELECT r.comment from restaurants re join reviews r on re.id_restaurant = re.id_restaurant AND re.restaurant_name = '".$names."' ";
-    $query_run1 = mysql_query($query1);
-    if($query_run1){
-    if(mysql_num_rows($query_run1) >= 1){
-  while ($query_row = mysql_fetch_assoc($query_run1)) {
-    $comments = $query_row['comment'].'<br>';
-     echo '<li>'.$comments.'</li>';
-  }
-}else{
-  echo "No Reviews yet...";
-}
-     
-  }
-  else{
-      echo mysql_error();
-    } ?>
-                                </ul>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-default pull-right" data-dismiss="modal">
-                                    <span class="glyphicon glyphicon-remove"></span> Cancel
-                                </button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
                 <!--                <div class="modal fade" id="details" role="dialog">
                     <div class="modal-dialog">
 
