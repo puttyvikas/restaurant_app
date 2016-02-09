@@ -160,8 +160,8 @@ $i = -1;
 
                                 <div <?php echo "class='details_".$id_restaurant[$i][ 'id_restaurant']. "'" ?> id="flip">Click to see the Reviews!!</div>
                                 <div <?php echo "class='pull-right pics_".$id_restaurant[$i][ 'id_restaurant']. "'" ?> id="flip_pics">Click to View Photos!!</div>
-                                <!--<button type="submit" class="btn btn-default pull-right" href="#details" data-toggle="modal" data-dismiss="modal" style="margin-top:-86px"> Details
-                                </button>-->
+                                <button type="submit" class="btn btn-default pull-right" href="#menu" data-toggle="modal" data-dismiss="modal" style="margin-top:-86px"> Menu
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -239,7 +239,44 @@ $query1 = "SELECT p.title from restaurants re join photos p on p.id_restaurant =
 }
 }
 ?>
+<div class="modal fade" id="menu" role="dialog">
+                    <div class="modal-dialog">
 
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                <h4 style="letter-spacing:2px;margin-bottom:12px">Menu</h4>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <?php 
+    $query1 = "SELECT i.item_name,i.price from restaurants re join items i on re.id_restaurant = re.id_restaurant AND re.restaurant_name = '".$names."' ";
+    $query_run1 = mysql_query($query1);
+    if($query_run1){
+    if(mysql_num_rows($query_run1) >= 1){
+  while ($query_row = mysql_fetch_assoc($query_run1)) {
+    $items = $query_row['item_name'].'  ------------ Rs: '.$query_row['price'].'/-<br>';
+     echo '<li>'.$items.'</li>';
+  }
+}else{
+  echo "No Items Found...";
+}
+     
+  }
+  else{
+      echo mysql_error();
+    } ?>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-default pull-right" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-remove"></span> Cancel
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                   <?php for($i=0;$i<11;$i++){ ?>
                     <script type="text/javascript">
                         document.getElementById('Location').value = "<?php echo $_POST['search'];?>";
