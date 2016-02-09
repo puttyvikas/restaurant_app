@@ -382,4 +382,30 @@ $query_run2 = mysql_query($query2);
                     </div>
                 </div>
 ?>
+
+
+<div class="col-sm-3">
+<form action="cart.php" method="post">
+      <div class="thumbnail">
+        <img class="fancybox" src=<?php echo $root_path.$profile_pic[$i]['profile_pic'] ;?> alt="Paris" width="400" height="300">
+        <p><strong><?php echo $product_name[$i]['product_name'] ;?></strong></p>
+        <p><?php echo 'Price: '.$price[$i]['price'] ;?></p>
+        <input type="text" <?php echo "name='quantity_".$i. "'" ?> style="display:none" value="1" size="1" /><input type="submit" class="btn" value="Remove"/>
+      </div>
+      </form>
+</div>
+
+<div class="col-md-4">
+    <?php
+$query2 = "SELECT SUM(price) as total FROM cart ";
+  $query_run2 = mysql_query($query2);
+  $name = mysql_result($query_run2,0, 'total');
+ $query2 = "SELECT id_card FROM cart";
+$query_run2 = mysql_query($query2);
+$cart_total = mysql_num_rows($query_run2);
+echo '<h2>Total items in your cart: '.$cart_total.'</h2>';
+  echo '<h2>Pay total amount:<br> Rs:'.$name.'/-</h2>';
+  
+?>
+</div>
 ?>

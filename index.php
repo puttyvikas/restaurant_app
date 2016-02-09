@@ -51,7 +51,7 @@ if(isset($_POST['search']) && (!empty($_POST['search']))){
 }
  global $search;
  ?>
-      
+  
         <div class="design_carousel container-fluid space_top_btm" style="background-image:url(images/wood2.jpg);">
             <div id="wowslider-container1">
                 <div class="ws_images">
@@ -108,7 +108,7 @@ $i = -1;
                 <div class="srch">
                     <form action="index.php" method="post">
                         <div class="form-group col-md-3">
-                            <label for="site_ori">Select City</label>
+                            <label for="location">Select City</label>
                             <select name="search" class="form-control" id="Location">
                                 <option value="">---Select Your City---</option>
                                 <option value="Hyderabad">Hyderabad</option>
@@ -121,8 +121,10 @@ $i = -1;
 
                     </form>
                 </div>
-            </div>
-        </div>
+                </div>
+                
+                </div>
+            
         <?php
 //$search = 'Hyderabad';
 $query = "SELECT id_restaurant,restaurant_name,location,area,rating,profile_pic FROM restaurants WHERE location LIKE '%".$search."%' ORDER BY rating DESC LIMIT 10";
@@ -132,6 +134,7 @@ $i = -1;
   if(mysql_num_rows($query_run) >= 1){
   while ($query_row = mysql_fetch_assoc($query_run)) {
     $i++;
+    
      $names = $name[$i]['restaurant_name'] = $query_row['restaurant_name'];
      $locations = $location[$i]['location'] = $query_row['location'];
      $areas = $area[$i]['area'] = $query_row['area'];
@@ -140,7 +143,7 @@ $i = -1;
      $id_restaurants = $id_restaurant[$i]['id_restaurant'] = $query_row['id_restaurant'];
      //echo $name[$i]['restaurant_name'];exit;
 ?>
-            <div class="container-fluid" style="background-image:url(images/wood2.jpg);">
+            <div class="container-fluid appendmore" style="background-image:url(images/wood2.jpg);">
                 <div class="container">
                     <div class="col-sm-12">
                         <div class="thumbnail" style="padding:10px">
@@ -179,13 +182,10 @@ $query1 = "SELECT r.comment from restaurants re join reviews r on r.id_restauran
   }
 }else{
   echo "No Reviews yet...";
-}
-     
-  }
-  else{
-      echo mysql_error();
-    }
-?>
+} ?>
+
+    <?php } ?>
+
          <!--add review goes here-->
          <hr style="width:650px;margin-left:-9px">
            <?php if(isset($_POST['add_review']) && (!empty($_POST['add_review']))) {echo '<li>'.$_POST['add_review'].'</li>';} ?>
@@ -195,10 +195,10 @@ $query1 = "SELECT r.comment from restaurants re join reviews r on r.id_restauran
                      <br> <br>
                          <button class="btn btn-info" type="submit" value="Submit" style="margin-left:525px;margin-top:-120px">Submit</button>
                 </form>
-                                    <?php 
+             <?php 
 if(isset($_POST['add_review']) && (!empty($_POST['add_review']))){
   $add_review = $_POST['add_review'];
-
+echo $id_restaurant[$i]['id_restaurant'];
 global $add_review;
 $query2 = "INSERT INTO reviews (id_restaurant,comment) VALUES('".$id_restaurant[$i]['id_restaurant']."','".$add_review."') ";
 $query_run2 = mysql_query($query2);
@@ -239,6 +239,11 @@ $query1 = "SELECT p.title from restaurants re join photos p on p.id_restaurant =
 }
 }
 ?>
+<div class="show_more_main col-md-1 col-md-offset-5" <?php echo "id='show_more_main".$id_restaurants. "'" ?> >
+        <span <?php echo "id='".$id_restaurants. "'" ?> class="show_more"><button class="btn">Load More</button></span>
+        <span class="loding" style="display: none;"><span class="loding_txt">Loading....</span></span>
+    </div>
+
 <div class="modal fade" id="menu" role="dialog">
                     <div class="modal-dialog">
 
@@ -277,6 +282,8 @@ $query1 = "SELECT p.title from restaurants re join photos p on p.id_restaurant =
                         </div>
                     </div>
                 </div>
+                <div class="aaa container-fluid" style="background-image:url(images/wood2.jpg);"></div>
+
                   <?php for($i=0;$i<11;$i++){ ?>
                     <script type="text/javascript">
                         document.getElementById('Location').value = "<?php echo $_POST['search'];?>";
@@ -293,7 +300,24 @@ $query1 = "SELECT p.title from restaurants re join photos p on p.id_restaurant =
                     </script>
                     <?php } ?>
 
-
+<script type="text/javascript">
+$(document).ready(function(){
+    $(document).on('click','.show_more',function(){
+        var ID = $(this).attr('id');
+        $('.show_more').hide();
+        $('.loding').show();
+        $.ajax({
+            type:'POST',
+            url:'more.php',
+            data:'id_restaurant='+ID,
+            success:function(html){
+                $('#show_more_main'+ID).remove();
+                $('.aaa').append(html);
+            }
+        }); 
+    });
+});
+</script>
 </body>
 
 </html>
